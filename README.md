@@ -1,24 +1,5 @@
-# README
+# Devise Sandbox
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Just setting this up quick for fun and to test a few options.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+...and now we build!
