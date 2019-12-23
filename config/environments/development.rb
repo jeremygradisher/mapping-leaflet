@@ -4,6 +4,16 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+
+  #https://mailtrap.io/inboxes/772571/messages
+  #for mailcatcher
+  config.action_mailer.smtp_settings = { :address => '0.0.0.0', :port => 8082 }
+
+  config.action_mailer.default_url_options = { :host => 'https://4cbdf84be8864ed9a16744ad8e8cf22c.vfs.cloud9.us-east-1.amazonaws.com'}
+
+  
   config.cache_classes = false
 
   # Do not eager load code on boot.
