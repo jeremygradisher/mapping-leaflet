@@ -2,7 +2,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Users:</th>
+      <th>User:</th>
+      <th>First:</th>
+      <th>Last:</th>
       <th>Last Signed in at:</th>
       
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -12,19 +14,21 @@
     <tr>
         
         <td><%= @user.email %></td>
+        <td><%= @user.first_name %></td>
+        <td><%= @user.last_name %></td>
         
         <td><%= @user.last_sign_in_at %></td>
         
         <td>
           <%#= link_to t('.view', :default => t("helpers.links.view")),
                       associate_path(associate), :class => 'btn btn-default btn-xs' %>
-          <%# if current_user && current_user.is_admin? %> 
+          <% if current_user.is_admin? %> 
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       user_path(@user),
                       :method => 'delete',
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-danger btn-xs' %> 
-          <%# end %>
+          <% end %>
         <%#= button_to 'Delete', users_path, :method => 'delete',  :confirm => 'Are you sure?' %>
         </td>
       </tr>
@@ -33,3 +37,7 @@
 <% else %>
  <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
+
+      <% if current_user.id == @user.id %>
+        <%= link_to 'change password', edit_user_registration_path, :style => '' %>
+      <% end %>

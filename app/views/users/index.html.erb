@@ -27,13 +27,17 @@
         <td>
           <%= link_to t('.view', :default => t("helpers.links.view")),
                       user_path(user), :class => 'btn btn-default btn-xs' %>
-          <%# if current_user && current_user.is_admin? %>
+          <% if current_user.is_admin? || user.id == current_user.id %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                    edit_user_path(user), :class => 'btn btn-primary btn-xs' %>
+          <% end %>
+          <% if current_user.is_admin? %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       user_path(user),
                       :method => 'delete',
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-danger btn-xs' %> 
-          <%# end %>
+          <% end %>
         </td>
       </tr>
     <% end %>
