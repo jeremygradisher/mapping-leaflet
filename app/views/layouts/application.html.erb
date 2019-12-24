@@ -52,7 +52,17 @@
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
+          <div style="float:right;margin-top:12px;text-align:right;">
+            <% if current_user %>
+              <%= current_user.email %><br>
+              <%= link_to('logout', destroy_user_session_path,
+                                    class: '', title: 'Logout', :method => :delete) %>
+            <% else %>
+              <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary btn-primary-altered', title: 'Sign In') %>
+            <% end %>
+          </div>
         </div>
+        
       </div>
     </div>
 
