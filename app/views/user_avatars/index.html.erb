@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Avatars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Avatar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_avatars.each do |user_avatar| %>
+      <tr>
+        <td><%= user_avatar.user_id %></td>
+        <td><%= user_avatar.avatar %></td>
+        <td><%= link_to 'Show', user_avatar %></td>
+        <td><%= link_to 'Edit', edit_user_avatar_path(user_avatar) %></td>
+        <td><%= link_to 'Destroy', user_avatar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Avatar', new_user_avatar_path %>

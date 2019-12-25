@@ -1,0 +1,85 @@
+<%= form_for @user, :html => { :class => "form-horizontal member" } do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this member from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :first_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :first_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:first_name) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :last_name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:last_name) %>
+  </div>
+  
+  
+  
+  
+  
+  <div class="form-group">
+  <% if @user_avatars.exists? %>
+    <%= f.label :user_Icon, :class => 'control-label col-lg-2'  %>
+      <div class="col-lg-4">
+        <% @user_avatars.each do |p| %>
+              <div style="margin-left:auto;margin-right:auto;text-align:center;">
+                <%= image_tag p.avatar_url, :style => 'max-width:90%;max-height:60px;padding:1%;' %>
+              </div><br>
+              
+              
+              <div style="margin-left:auto;margin-right:auto;text-align:center;">
+              <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
+                    edit_user_avatar_path(p), :class => 'btn btn-primary', 
+                    :title => 'Edit Attachment'  %>
+              <%#= link_to "Destroy Attachment", destroy_associate_attachment_path(p) %>
+              <%= link_to '<i class="fa fa-remove"></i>'.html_safe,
+                    user_avatar_path(p),
+                    :method => 'delete',
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-danger', :title => 'Delete Attachment'  %>
+              </div>
+              
+        <% end %>
+      </div>
+    
+    <% else %>  
+      <%#= f.fields_for :user_avatars do |p| %>
+         <%= f.label :user_Icon, :class => 'control-label col-lg-2'  %>
+         <div class="col-lg-4">
+         <%= f.file_field :avatar, :multiple => true, name: "user_avatars[avatar][]", :class => 'form-control' %>
+
+         </div>
+     <%# end %>
+    <% end %>
+  </div>
+  
+  
+  
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

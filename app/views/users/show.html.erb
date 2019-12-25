@@ -1,43 +1,54 @@
 <% if current_user %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>User:</th>
-      <th>First:</th>
-      <th>Last:</th>
-      <th>Last Signed in at:</th>
-      
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        
-        <td><%= @user.email %></td>
-        <td><%= @user.first_name %></td>
-        <td><%= @user.last_name %></td>
-        
-        <td><%= @user.last_sign_in_at %></td>
-        
-        <td>
-          <%#= link_to t('.view', :default => t("helpers.links.view")),
-                      associate_path(associate), :class => 'btn btn-default btn-xs' %>
-          <% if current_user.is_admin? %> 
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      user_path(@user),
-                      :method => 'delete',
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-danger btn-xs' %> 
-          <% end %>
-        <%#= button_to 'Delete', users_path, :method => 'delete',  :confirm => 'Are you sure?' %>
-        </td>
-      </tr>
-  </tbody>
-</table>
+
+<div class="row">
+  
+  <div class="col-lg-4 col-lg-offset-4" style="text-align:center;margin-top:20px;">
+      <div class="panel panel-default member-panels" style="/*border-color:#210f5b;*/">
+        <div class="panel-heading project-panel-heading" 
+        style="height:340px;background-size: cover;background-image: url('<% if @user.user_avatars.exists? %><%= @user.user_avatars.first.avatar %><% else %>/images/NO-IMAGE-AVAILABLE.jpg<% end %>');">
+          <h4 style="margin-top:270px;color:#fff;text-shadow: 2px 2px 4px #333; text-align:center;vertical-align:bottom;">
+            <%= @user.first_name %> <%= @user.last_name %></h3>
+        </div>
+        <div class="panel-body project-panel-body" style="text-align:center;">
+              <% if @user.is_admin? %>Admin User
+              <% else %>Normal User
+              <% end %>
+        </div>
+        <div class="panel-footer project-panel-footer">
+          
+          <span style="float:left;">
+          <%= link_to '<= Home',
+              root_url, :class => 'btn btn-default'  %>
+          </span>           
+          <span style="float:right;">
+            <% if current_user.is_admin? || current_user.id == @user.id %>
+              <%= link_to 'Edit Member =>',
+                  edit_user_path(@user), :class => 'btn btn-primary' %>
+
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          user_path(@user),
+                          :method => 'delete',
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-danger' %> 
+          
+            <% end %>
+          </span>
+          <br style="clear:both;">
+        </div>
+      </div>
+      <% if current_user.id == @user.id %>
+        <%= link_to 'change password', edit_user_registration_path, :style => '' %>
+      <% end %>
+      </div>
+</div>
+
+
+
 <% else %>
  <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
 <% end %>
 
-      <% if current_user.id == @user.id %>
-        <%= link_to 'change password', edit_user_registration_path, :style => '' %>
-      <% end %>
+      
+      
+      
+      
