@@ -1,27 +1,43 @@
-<%= form_for(user_avatar) do |f| %>
-  <% if user_avatar.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_avatar.errors.count, "error") %> prohibited this user_avatar from being saved:</h2>
-
-      <ul>
-      <% user_avatar.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+<%= form_for(@user_avatar) do |f| %>
+<% if @user_avatar.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_avatar.errors.count, "error") %> prohibited this @user_avatar from being saved:</h2>
+    <ul>
+    <% @user_avatar.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :avatar %>
-    <%= f.text_field :avatar %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
+
+<div class="panel panel-default member-panels" style="/*border-color:#210f5b;*/">
+  <div class="panel-heading project-panel-heading" 
+          style="/*width:100%;background-size: cover;
+          background-image: url('<%= @user_avatar.avatar %>');*/
+          padding:0 0;">
+    <%= image_tag @user_avatar.avatar, :style => 'max-width:100%;padding:0px;' %>
+
   </div>
+  
+  <div class="panel-body project-panel-body" style="text-align:center;">
+      <div class="field">
+          <%= f.label :avatar %><br>
+          <%= f.file_field :avatar, :id => "image_picture", :class => 'form-control' %>
+        </div>
+        <div class="actions">
+          <%#= f.submit %>
+          <%= f.submit nil, :class => 'btn btn-primary' %>
+        </div>
+      
+  </div>
+  
+  <div class="panel-footer project-panel-footer">
+    <%= link_to 'Show', @user_avatar, :class => 'btn btn-default' %> |
+        <%= link_to 'Back', user_avatars_path, :class => 'btn btn-default' %> |
+        <%= link_to 'Home', root_path, :class => 'btn btn-default' %>
+  </div>
+</div>
+
 <% end %>

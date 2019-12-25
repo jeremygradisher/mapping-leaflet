@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th width="100">User id:</th>
       <th>Avatar</th>
       <th colspan="3"></th>
     </tr>
@@ -15,10 +15,11 @@
     <% @user_avatars.each do |user_avatar| %>
       <tr>
         <td><%= user_avatar.user_id %></td>
-        <td><%= user_avatar.avatar %></td>
-        <td><%= link_to 'Show', user_avatar %></td>
-        <td><%= link_to 'Edit', edit_user_avatar_path(user_avatar) %></td>
-        <td><%= link_to 'Destroy', user_avatar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to image_tag(user_avatar.avatar, :style => 'max-width:50px;max-height:50px;padding:2px;', :class => ''), user_avatar %></td>
+        
+        <td><%= link_to 'Show', user_avatar, :class => 'btn btn-default' %></td>
+        <td><%= link_to 'Edit', edit_user_avatar_path(user_avatar), :class => 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', user_avatar, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New User Avatar', new_user_avatar_path %>
+<%= link_to 'Home', root_path, :class => 'btn btn-default' %>

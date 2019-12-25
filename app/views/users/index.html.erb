@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>ID:</th>
+      <th>Avatar:</th>
       <th>User:</th>
       <th>First Name:</th>
       <th>Last Name:</th>
@@ -16,8 +17,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
+        <td><%= link_to user.id, user_path(user) %></td>
+        <td><%= link_to image_tag(user.user_avatars.first.avatar, :style => 'max-width:50px;max-height:50px;padding:2px;'), user_path(user) %></td>
+        <td><%= link_to user.email, user_path(user) %></td>
         <td><%= user.first_name %></td>
          <td><%= user.last_name %></td>
         <td><%= user.is_admin %></td>
@@ -43,6 +45,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Home', root_path, :class => 'btn btn-default' %>
 
 <%#= link_to users_path %>
 <% else %>
