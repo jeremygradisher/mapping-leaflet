@@ -1,1 +1,27 @@
 body {margin:0 !important;}
+
+.form-control-image {
+    vertical-align: top;
+    height:18pt;
+    margin-top:0;
+    margin-bottom:0;    
+    border-radius:4px;
+    margin-right:4px;
+}
+
+.form-control-button {
+    vertical-align: top;
+    font-size:20pt;
+    line-height:18pt;
+    margin-top:0;
+    margin-bottom:0;
+    margin-right:4px;
+}
+
+.form-control {
+    height:38px;
+}
+
+.form-control-button {
+    vertical-align: middle;
+    font-size: 16pt; }
