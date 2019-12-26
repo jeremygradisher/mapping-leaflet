@@ -14,6 +14,15 @@
       </div>
     </div>
   <% end %>
+  
+  <div class="form-group">
+    <%= f.label :email, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.email_field :email, :class => 'form-control' %><br>
+      *You have to re-confirm your email to switch it.
+    </div>
+    <%=f.error_span(:email) %>
+  </div>
 
   <div class="form-group">
     <%= f.label :first_name, :class => 'control-label col-lg-2' %>
@@ -44,8 +53,8 @@
                     edit_user_avatar_path(p), :class => 'form-control-button', 
                     :title => 'Edit Attachment', :style => 'color:#428bca;'  %>
 
-              <%#= link_to '<i class="fa fa-remove"></i>'.html_safe,
-                    memberimage_path(p),
+              <%= link_to '<i class="fa fa-trash"></i>'.html_safe,
+                    user_avatar_path(p),
                     :method => 'delete',
                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                     :class => 'form-control-button', :title => 'Delete Attachment', :style => 'color:#d9534f;'  %>

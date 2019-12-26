@@ -1,14 +1,29 @@
+<% if current_user %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @user_avatar.user_id %>
-</p>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @user_avatar.avatar %>
-</p>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4" style="text-align:center;">
 
-<%= link_to 'Edit', edit_user_avatar_path(@user_avatar) %> |
-<%= link_to 'Back', user_avatars_path %>
+    <p>
+      <strong>User:</strong>
+      #<%= @user_avatar.user_id %><br>
+      <%= @user_avatar.user.email %>
+      <br><br>
+      <strong>Avatar:</strong>
+      <%= image_tag(@user_avatar.avatar, :style => 'width:300px;') %>
+    </p>
+
+<%= link_to '<= Back', user_avatars_path, :class => 'btn btn-default' %> |
+<%= link_to 'Edit', edit_user_avatar_path(@user_avatar), :class => 'btn btn-primary' %> | 
+<%= link_to 'Delete Avatar', @user_avatar, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+
+  </div>
+</div>
+
+
+
+
+<% else %>
+ <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>
