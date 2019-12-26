@@ -31,8 +31,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#bootstrap it up
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+
+#for image uploading
+gem 'carrierwave', '~> 2.0'
+#gem 'mini_magick', '4.9.3'
+#gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Avatars</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="100">Avatar id:</th>
+      <th>Avatar:</th>
+      <th>Actions:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_avatars.each do |user_avatar| %>
+      <tr>
+        <td><%= user_avatar.id %></td>
+        <td><%= link_to image_tag(user_avatar.avatar, :style => 'max-width:50px;max-height:50px;padding:2px;', :class => ''), user_avatar %></td>
+        
+        <td><%= link_to 'Show', user_avatar, :class => 'btn btn-default' %>
+        <%= link_to 'Edit', edit_user_avatar_path(user_avatar), :class => 'btn btn-primary' %>
+        <%= link_to 'Delete Avatar', user_avatar, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Home', root_path, :class => 'btn btn-default' %>

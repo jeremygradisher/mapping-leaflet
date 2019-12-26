@@ -10,12 +10,19 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    @user_avatar = @user.user_avatars.build
+    @user_avatars = @user.user_avatars.all
   end
   
   def update
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update(user_params)
+        if params.has_key?(:user_avatars)
+           params[:user_avatars]['avatar'].each do |a|
+              @user_avatar = @user.user_avatars.create!(:avatar => a)
+           end
+        end
         format.html { redirect_to users_url, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

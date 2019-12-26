@@ -1,0 +1,55 @@
+<%= form_for(@user_avatar) do |f| %>
+  <% if @user_avatar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_avatar.errors.count, "error") %> prohibited this @user_avatar from being saved:</h2>
+        <ul>
+          <% @user_avatar.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+
+
+<div class="panel panel-default member-panels" style="/*border-color:#210f5b;*/">
+  <div class="panel-heading project-panel-heading" 
+          style="padding:0 0;">
+    <%= image_tag @user_avatar.avatar, :style => 'max-width:100%;padding:0px;' %>
+
+  </div>
+  
+  <div class="panel-body project-panel-body" style="text-align:center;">
+      <div class="field">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, :id => "AvatarUpload", :class => 'form-control' %>
+      </div>
+      <div class="actions">
+        <%#= link_to 'Cancel',  @user_avatar, :class => 'btn btn-primary', :style => '' %>
+        <%= f.submit 'Update User Avatar', :id => 'UpdateButton', :class => 'btn btn-primary' %>
+        <%= link_to 'Destroy', @user_avatar, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+      </div>
+  </div>
+  
+  <div class="panel-footer project-panel-footer">
+        <%= link_to '<= Cancel', @user_avatar, :class => 'btn btn-default', :style => 'float:left;' %>
+        <%= link_to 'Home', root_path, :class => 'btn btn-primary', :style => 'float:right;' %>
+        <br style="clear:both;">
+  </div>
+</div>
+
+<% end %>
+
+
+<script>
+  //this disables the update button until there is something in the field
+  $(document).ready(function(){
+    $('#UpdateButton').attr('disabled',true);
+    $('#AvatarUpload').change(function(){
+        if($(this).val().length !=0)
+            $('#UpdateButton').attr('disabled', false);            
+        else
+            $('#UpdateButton').attr('disabled',true);
+    })
+});
+</script>

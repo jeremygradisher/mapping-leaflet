@@ -1,0 +1,2 @@
+module UserAvatarsHelper
+end
