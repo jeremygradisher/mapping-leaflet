@@ -22,19 +22,34 @@
   <div class="panel-body project-panel-body" style="text-align:center;">
       <div class="field">
         <%= f.label :avatar %>
-        <%= f.file_field :avatar, :id => "image_picture", :class => 'form-control' %>
+        <%= f.file_field :avatar, :id => "AvatarUpload", :class => 'form-control' %>
       </div>
       <div class="actions">
-        <%= f.submit 'Update User Avatar', :class => 'btn btn-primary' %>
+        <%#= link_to 'Cancel',  @user_avatar, :class => 'btn btn-primary', :style => '' %>
+        <%= f.submit 'Update User Avatar', :id => 'UpdateButton', :class => 'btn btn-primary' %>
         <%= link_to 'Destroy', @user_avatar, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
       </div>
   </div>
   
   <div class="panel-footer project-panel-footer">
-        <%= link_to '<= Show', @user_avatar, :class => 'btn btn-default', :style => 'float:left;' %>
+        <%= link_to '<= Cancel', @user_avatar, :class => 'btn btn-default', :style => 'float:left;' %>
         <%= link_to 'Home', root_path, :class => 'btn btn-primary', :style => 'float:right;' %>
         <br style="clear:both;">
   </div>
 </div>
 
 <% end %>
+
+
+<script>
+  //this disables the update button until there is something in the field
+  $(document).ready(function(){
+    $('#UpdateButton').attr('disabled',true);
+    $('#AvatarUpload').change(function(){
+        if($(this).val().length !=0)
+            $('#UpdateButton').attr('disabled', false);            
+        else
+            $('#UpdateButton').attr('disabled',true);
+    })
+});
+</script>
