@@ -3,6 +3,9 @@
 <div class="row">
   
   <div class="col-lg-4 col-lg-offset-4" style="text-align:center;margin-top:20px;">
+    
+    <h1>User #<%= @user.id %></h1>
+    
       <div class="panel panel-default member-panels" style="/*border-color:#210f5b;*/">
         <div class="panel-heading project-panel-heading" 
         style="height:340px;background-size: cover;
@@ -40,6 +43,7 @@
       <% if current_user.id == @user.id %>
         <%= link_to 'change password', edit_user_registration_path, :style => '' %>
       <% end %>
+      <br><br>
   </div>
 </div>
 
