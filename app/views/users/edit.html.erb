@@ -1,4 +1,4 @@
-<% if current_user.is_admin? || current_user.id == @user.id %>
+<% if current_user %>
 
 <%- model_class = User -%>
 <div class="page-header">

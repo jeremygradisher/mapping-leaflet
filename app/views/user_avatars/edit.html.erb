@@ -1,3 +1,4 @@
+<% if current_user %>
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4" style="">
         <h1>Editing User Avatar</h1>
@@ -8,3 +9,6 @@
     </div>
 </div>
 
+<% else %><!-- else and end for <%# if current_user.project_ids.include? @project.id %> -->
+  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %><!-- END <%# if current_user.project_ids.include? @project.id %> -->
