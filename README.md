@@ -13,5 +13,8 @@ $ heroku config:set S3_ACCESS_KEY=xxxxxxxxxxxxxxx -a devise-sandbox
 $ heroku config:set S3_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -a devise-sandbox
 ```
 Check it out if you would like:<br>
-https://devise-sandbox.herokuapp.com
+<a href="https://devise-sandbox.herokuapp.com" target="_blank">https://devise-sandbox.herokuapp.com</a><br>
+You need to make an account to see anything...
+
+...and now we build.
 
