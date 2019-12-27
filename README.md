@@ -12,3 +12,6 @@ $ heroku config:set S3_BUCKET=xxxxxxxxxxxxxxx -a devise-sandbox
 $ heroku config:set S3_ACCESS_KEY=xxxxxxxxxxxxxxx -a devise-sandbox
 $ heroku config:set S3_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -a devise-sandbox
 ```
+Check it out if you would like:<br>
+https://devise-sandbox.herokuapp.com
+
