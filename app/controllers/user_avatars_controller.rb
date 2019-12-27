@@ -19,6 +19,7 @@ class UserAvatarsController < ApplicationController
 
   # GET /user_avatars/1/edit
   def edit
+    @user = @user_avatar.user
   end
 
   # POST /user_avatars
@@ -40,13 +41,14 @@ class UserAvatarsController < ApplicationController
   # PATCH/PUT /user_avatars/1
   # PATCH/PUT /user_avatars/1.json
   def update
+    @user = @user_avatar.user
     respond_to do |format|
       if @user_avatar.update(user_avatar_params)
-        format.html { redirect_to @user_avatar, notice: 'User avatar was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User avatar was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_avatar }
       else
         format.html { render :edit }
-        format.json { render json: @user_avatar.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

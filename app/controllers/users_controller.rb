@@ -23,7 +23,7 @@ class UsersController < ApplicationController
               @user_avatar = @user.user_avatars.create!(:avatar => a)
            end
         end
-        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

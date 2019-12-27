@@ -1,4 +1,4 @@
-<% if current_user.is_admin? || current_user.id == @user_avatar.user.id %>
+<% if (current_user && current_user.is_admin?) || (current_user && current_user.id == @user_avatar.user.id ) %>
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4" style="">
         <h1>Editing User Avatar</h1>

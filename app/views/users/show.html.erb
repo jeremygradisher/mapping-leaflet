@@ -4,18 +4,18 @@
   
   <div class="col-lg-4 col-lg-offset-4" style="text-align:center;margin-top:20px;">
     
-    <h1>User #<%= @user.id %></h1>
+    <h1>User id:<%= @user.id %></h1>
     
       <div class="panel panel-default member-panels" style="/*border-color:#210f5b;*/">
-        <div class="panel-heading project-panel-heading" 
-        style="height:340px;background-size: cover;
-        background-image: url('<% if @user.user_avatars.exists? %><%= @user.user_avatars.first.avatar %><% else %>/images/NO-IMAGE-AVAILABLE.jpg<% end %>');">
-          <h4 style="margin-top:270px;color:#fff;text-shadow: 2px 2px 4px #333; text-align:center;vertical-align:bottom;">
-            <%= @user.first_name %> <%= @user.last_name %></h3>
+        <div class="panel-heading project-panel-heading" style="padding:0;">
+          <% if @user.user_avatars.exists? %>
+            <%= image_tag(@user.user_avatars.first.avatar, :style => "width:100%;") %>
+          <% else %><%= image_tag('/images/NO-IMAGE-AVAILABLE.jpg', :style => "width:100%;") %>
+          <% end %>
         </div>
         <div class="panel-body project-panel-body" style="text-align:center;">
               <% if @user.is_admin? %>*Admin User<br><% end %>
-              
+              <%= @user.first_name %> <%= @user.last_name %><br>
               <%= @user.email %>
         </div>
         <div class="panel-footer project-panel-footer">
