@@ -1,11 +1,13 @@
-<% if current_user %>
+<% if current_user.is_admin? || current_user.id == @user.id %>
 
 <%- model_class = User -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 
-<%= render :partial => 'form' %>
+
+  <%= render :partial => 'form' %>
+
 
 <% else %><!-- else and end for <%# if current_user.project_ids.include? @project.id %> -->
   <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>

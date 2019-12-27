@@ -19,8 +19,11 @@
         <td><%= link_to image_tag(user_avatar.avatar, :style => 'max-width:50px;max-height:50px;padding:2px;', :class => ''), user_avatar %></td>
         
         <td><%= link_to 'Show', user_avatar, :class => 'btn btn-default' %>
+        
+        <% if current_user.is_admin? || current_user.id == user_avatar.user.id %>
         <%= link_to 'Edit', edit_user_avatar_path(user_avatar), :class => 'btn btn-primary' %>
         <%= link_to 'Delete Avatar', user_avatar, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
