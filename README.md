@@ -1,7 +1,7 @@
 # Devise Sandbox
 
 Just setting this up quick for fun and to test a few options.<br>
-Basic set-up with a User Model, Devise for user authentication and S3 bucket to store UserAvatar images.<br>
+Basic Ruby on Rails application with a User Model, Devise for user authentication and S3 bucket to store UserAvatar images.<br>
 It uses Sendgrid to email on account verification and password resets.
 
 In Production create an AWS S3 bucket, an IAM user and a policy for permissions and the connection.
