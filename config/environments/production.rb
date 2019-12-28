@@ -22,7 +22,7 @@ Rails.application.configure do
   config.eager_load = true
   config.action_mailer.delivery_method = :smtp
   #simpl addition of www here to try and change the email confirmation links
-  config.action_mailer.default_url_options = { :host => 'mapping-leaflet.herokuapp.com', :protocol => 'https'}
+  config.action_mailer.default_url_options = { :host => 'mapping-with-leaflet.herokuapp.com', :protocol => 'https'}
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
