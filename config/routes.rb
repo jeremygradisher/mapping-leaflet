@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :maps
   resources :user_avatars
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'welcome/index'
