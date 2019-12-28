@@ -11,7 +11,7 @@ Rails.application.configure do
   #for mailcatcher
   config.action_mailer.smtp_settings = { :address => '0.0.0.0', :port => 8082 }
 
-  config.action_mailer.default_url_options = { :host => 'https://4cbdf84be8864ed9a16744ad8e8cf22c.vfs.cloud9.us-east-1.amazonaws.com'}
+  config.action_mailer.default_url_options = { :host => 'https://368c563a099b4017859ac6f0b528a584.vfs.cloud9.us-east-1.amazonaws.com'}
 
   
   config.cache_classes = false
