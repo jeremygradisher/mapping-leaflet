@@ -1,0 +1,55 @@
+<%= form_for @mapimage, :html => { :class => "form-horizontal mapimage" } do |f| %>
+
+  <% if @mapimage.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@mapimage.errors.count, "error") %> prohibited this mapimage from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @mapimage.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :map_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :map_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:map_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mapimage, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :mapimage, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:mapimage) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :width, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :width, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:width) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :height, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :height, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:height) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                mapimages_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
