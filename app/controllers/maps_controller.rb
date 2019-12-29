@@ -28,6 +28,11 @@ class MapsController < ApplicationController
 
     respond_to do |format|
       if @map.save
+        if params.has_key?(:mapimages)
+           params[:mapimages]['mapimage'].each do |a|
+              @mapimage = @map.mapimages.create!(:mapimage => a)
+           end
+        end
         format.html { redirect_to @map, notice: 'Map was successfully created.' }
         format.json { render :show, status: :created, location: @map }
       else
@@ -42,6 +47,11 @@ class MapsController < ApplicationController
   def update
     respond_to do |format|
       if @map.update(map_params)
+        if params.has_key?(:mapimages)
+           params[:mapimages]['mapimage'].each do |a|
+              @mapimage = @map.mapimages.create!(:mapimage => a)
+           end
+        end
         format.html { redirect_to @map, notice: 'Map was successfully updated.' }
         format.json { render :show, status: :ok, location: @map }
       else
@@ -69,6 +79,6 @@ class MapsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def map_params
-      params.require(:map).permit(:name, :user_id, :key, :user_id)
+      params.require(:map).permit(:name, :user_id, :key, :user_id, mapimages_attributes: [:id, :map_id, :mapimage])
     end
 end
