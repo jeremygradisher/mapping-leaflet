@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :areas
   resources :mapimages
   resources :maps
   resources :user_avatars
