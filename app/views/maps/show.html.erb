@@ -10,6 +10,12 @@
   <dd><%= @map.user_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:key) %>:</strong></dt>
   <dd><%= @map.key %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:mapimage) %>:</strong></dt>
+  <dd><%= @map.mapimages.first.mapimage %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:width) %>:</strong></dt>
+  <dd><%= @map.mapimages.first.width %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:height) %>:</strong></dt>
+  <dd><%= @map.mapimages.first.height %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

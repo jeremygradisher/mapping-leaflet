@@ -1,3 +1,5 @@
+<%= image_tag @mapimage.mapimage, :style => 'max-width:300px;padding:20px;' %>
+
 <%= form_for @mapimage, :html => { :class => "form-horizontal mapimage" } do |f| %>
 
   <% if @mapimage.errors.any? %>
@@ -14,6 +16,11 @@
       </div>
     </div>
   <% end %>
+  
+    <div class="form-group">
+      <%= f.label :mapimage, :class => 'control-label col-lg-2' %>
+      <%= f.file_field :mapimage, :id => "image_picture" %>
+    </div>
 
   <div class="form-group">
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
@@ -22,13 +29,11 @@
     </div>
     <%=f.error_span(:map_id) %>
   </div>
-  <div class="form-group">
-    <%= f.label :mapimage, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :mapimage, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:mapimage) %>
-  </div>
+  <br>
+    *I'm having an issue in Development where it's not saving the dimensions for the map image.<br>
+    **It still appears to be fine when uploading in Production 
+    - I added these so I can add them manually if need be.<br>
+    <br>
   <div class="form-group">
     <%= f.label :width, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">

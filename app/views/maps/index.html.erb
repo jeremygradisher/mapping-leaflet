@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:key) %></th>
+      <th><%= model_class.human_attribute_name(:mapimage) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,7 +19,7 @@
         <td><%= link_to map.id, map_path(map) %></td>
         <td><%= map.name %></td>
         <td><%= map.user_id %></td>
-        <td><%= map.key %></td>
+        <td><%= map.mapimages.first.mapimage %></td>
         <td><%=l map.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

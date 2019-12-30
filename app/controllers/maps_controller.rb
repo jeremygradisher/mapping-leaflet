@@ -15,10 +15,14 @@ class MapsController < ApplicationController
   # GET /maps/new
   def new
     @map = Map.new
+    @mapimage = @map.mapimages.build
+    @mapimages = @map.mapimages.all
   end
 
   # GET /maps/1/edit
   def edit
+    @mapimage = @map.mapimages.build
+    @mapimages = @map.mapimages.all
   end
 
   # POST /maps

@@ -15,6 +15,7 @@
     </div>
   <% end %>
 
+
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -41,6 +42,41 @@
     </div>
     <%=f.error_span(:key) %>
   </div>
+  
+  <div class="form-group">  
+    <% if @mapimages.exists? %>
+      <%= f.label :map_image, 'Map Image', :class => 'control-label col-lg-2'  %>
+      <div class="col-lg-10">
+        <% @mapimages.each do |p| %>
+              <div class="form-control">
+                <%= image_tag p.mapimage_url, :class => 'form-control-image' %>
+                <%= link_to '<i class="fa fa-edit"></i>'.html_safe,
+                      edit_mapimage_path(p), :class => 'form-control-button', 
+                      :title => 'Edit Attachment'  %>
+                <%= link_to '<i class="fa fa-trash"></i>'.html_safe,
+                    mapimage_path(p),
+                    :method => 'delete',
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'form-control-button', :title => 'Delete Attachment', :style => 'color:#d9534f;'  %>
+              
+              </div>
+        <% end %>
+      </div>
+    <% else %>  
+      <%= f.label :map_image, "Map Image", :class => 'control-label col-lg-2'  %>
+      <div class="col-lg-10">
+      <%= f.file_field :mapimage, :multiple => false, name: "mapimages[mapimage][]",
+        :class => 'form-control', onchange: "validateFiles(this);",
+        data: { max_file_size: 2.megabytes } %>
+      </div>
+    <% end %>
+  </div>  
+  
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10"> 
+      *All fields are required for Create Map button to be enabled.
+    </div>
+  </div>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
@@ -51,3 +87,21 @@
   </div>
 
 <% end %>
+
+
+<script>
+  $(document).ready(function (){
+    validate();
+    $('#map_name, #map_mapimage').change(validate);
+});
+
+function validate(){
+    if ($('#map_name').val().length   >   0   &&
+        $('#map_mapimage').val().length    >   0) {
+        $("input[type=submit]").prop("disabled", false);
+    }
+    else {
+        $("input[type=submit]").prop("disabled", true);
+    }
+}
+</script>

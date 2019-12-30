@@ -69,6 +69,6 @@ class MapimagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mapimage_params
-      params.require(:mapimage).permit(:map_id, :mapimage, :width, :height, :map_id)
+      params.require(:mapimage).permit(:map_id, :mapimage, :width, :height)
     end
 end

@@ -47,6 +47,7 @@ class MapimageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  #https://github.com/carrierwaveuploader/carrierwave/wiki/How-to:-Get-image-dimensions
   process :store_dimensions
 
   private
@@ -54,6 +55,7 @@ class MapimageUploader < CarrierWave::Uploader::Base
   def store_dimensions
     if file && model
       model.width, model.height = `identify -format "%wx%h" #{file.path}`.split(/x/)
+      #model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
     end
   end
 end
