@@ -15,6 +15,11 @@ class AreasController < ApplicationController
   # GET /areas/new
   def new
     @area = Area.new
+    @map = Map.find(params[:map_id])
+    @map_id = params[:map_id]
+    @mapimage = @map.mapimages.first
+    @mapimages = @map.mapimages.all
+    @areas = @map.areas.all
   end
 
   # GET /areas/1/edit

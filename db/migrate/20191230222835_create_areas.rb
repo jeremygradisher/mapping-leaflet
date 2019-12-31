@@ -7,7 +7,7 @@ class CreateAreas < ActiveRecord::Migration[5.0]
       t.string :coords
       t.integer :map_id
       t.string :key
-      t.belongs_to :maps, index: true, foreign_key: true
+      t.belongs_to :map, index: true, foreign_key: true
 
       t.timestamps
     end

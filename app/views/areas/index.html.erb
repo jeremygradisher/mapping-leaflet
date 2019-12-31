@@ -12,7 +12,6 @@
       <th><%= model_class.human_attribute_name(:coords) %></th>
       <th><%= model_class.human_attribute_name(:map_id) %></th>
       <th><%= model_class.human_attribute_name(:key) %></th>
-      <th><%= model_class.human_attribute_name(:maps_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -27,7 +26,6 @@
         <td><%= area.coords %></td>
         <td><%= area.map_id %></td>
         <td><%= area.key %></td>
-        <td><%= area.maps_id %></td>
         <td><%=l area.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

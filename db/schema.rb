@@ -19,10 +19,9 @@ ActiveRecord::Schema.define(version: 20191230222835) do
     t.string   "coords"
     t.integer  "map_id"
     t.string   "key"
-    t.integer  "maps_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["maps_id"], name: "index_areas_on_maps_id"
+    t.index ["map_id"], name: "index_areas_on_map_id"
   end
 
   create_table "mapimages", force: :cascade do |t|

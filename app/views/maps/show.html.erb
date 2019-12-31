@@ -6,9 +6,14 @@
 
   <div class="row" id="mapHolder">
     <div class="col-xs-10 col-xs-offset-1">
-      <%#= render 'fullmap' %>
+      <%= render 'fullmap' %>
     </div>
   </div>
+  
+  
+  <br>
+  <%= link_to '+ Add space', new_area_path(:map_id => @map), :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;' %>
+  <br>
 
 
 

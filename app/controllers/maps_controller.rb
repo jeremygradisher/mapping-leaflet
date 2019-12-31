@@ -11,7 +11,7 @@ class MapsController < ApplicationController
   # GET /maps/1.json
   def show
     @mapimage = @map.mapimages.first
-    #@mapareas = @map.areas.all
+    @mapareas = @map.areas.all
   end
 
   # GET /maps/new
