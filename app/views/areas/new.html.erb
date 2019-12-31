@@ -1,0 +1,69 @@
+<%- model_class = Area -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+
+<div class="row" id="mapHolder">
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= render 'editmap' %>
+    </div>
+  </div>
+  
+<script>
+	// Initialise the FeatureGroup to store editable layers
+	var drawnItems = new L.FeatureGroup();
+	map.addLayer(drawnItems);
+
+
+	// Initialise and alter the draw control and pass it the FeatureGroup of editable layers
+	var drawControl = new L.Control.Draw({
+		draw: {
+			//These options make up the root object that is used when initialising the Leaflet.draw control.
+			position: 'topleft',
+			polygon: {
+				allowIntersection: false,
+				drawError: {
+					color: '#00dd00',
+					timeout: 1000
+				},
+				shapeOptions: {
+					color: '#00dd00',
+				weight: 1
+				},
+				showArea: true
+			},
+			polyline:  false,
+			rectangle:  {
+				shapeOptions: {
+					color: '#00dd00',
+				weight: 1
+				}
+			},
+			circle: false
+        },
+		edit: {
+			featureGroup: drawnItems
+		}
+	});
+	map.addControl(drawControl);
+	
+	
+	//draw:created - Triggered when a new vector or marker has been created.
+	map.on('draw:created', function (e) {
+		var type = e.layerType,
+			layer = e.layer;
+		
+		var shape = layer.toGeoJSON();
+  	var shape_for_db = JSON.stringify(shape);
+
+		drawnItems.addLayer(layer);
+		//trying some things here
+
+
+		
+		//alert(shape_for_db);
+		document.getElementById('area_coords').value = shape_for_db;
+	});
+</script>
+
+<%= render :partial => 'form' %>

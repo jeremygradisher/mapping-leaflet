@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  map_id: 1
+  mapimage: MyString
+  width: 1
+  height: 1
+  map: one
+
+two:
+  map_id: 1
+  mapimage: MyString
+  width: 1
+  height: 1
+  map: two

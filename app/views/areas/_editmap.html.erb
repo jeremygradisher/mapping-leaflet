@@ -1,0 +1,60 @@
+<%# map stuff starts here %>	
+<div id='map' style="height:464px;"></div>
+
+<script>
+	//A Leaflet map has one CRS (CRS.Simple), one horizontal map unit is mapped to one horizontal pixel
+	
+	<% if @mapimage.height.to_i > 10000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -6});
+	<% elsif @mapimage.height.to_i > 5000 && @mapimage.height.to_i <= 10000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -5});
+	<% elsif @mapimage.height.to_i > 2500 && @mapimage.height.to_i <= 5000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -4});
+	<% else %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -3});
+	<% end %>
+
+	//var attributionInfo = L.control.attribution({prefix: '<span class="AttributionClass">Map: <%#= link_to @map.name, map_path(@map) %> | <%#= @mapimage.width.to_i %>w, <%#= @mapimage.height.to_i %>h</span>'}).addTo(map);
+
+
+	//If working with [y, x] coordinates with something named L.LatLng doesn’t make much sense to you, 
+	//you can easily create wrappers for them:
+	var yx = L.latLng;
+
+	var xy = function(x, y) {
+		if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+			return yx(x[1], x[0]);
+		}
+		return yx(y, x);  // When doing xy(x, y);
+	};
+	
+	//Then we can just add a L.ImageOverlay with the image and its approximate bounds:
+	var bounds = [xy(0,0), xy(<%= @mapimage.width %>,<%= @mapimage.height %>)];
+	//var image = L.imageOverlay('/images/demo-lease-plan.png', bounds).addTo(map);
+	var image = L.imageOverlay('<%= @mapimage.mapimage_url %>', bounds).addTo(map);
+
+	//map.setView(xy(120, 70), 1);
+    map.fitBounds(bounds);
+    
+    // Restrict view to bounds
+	map.setMaxBounds(bounds);
+
+    //same on all maps - Now we can create our icons from this class and use them:
+    <%= render 'marker_variables' %>
+
+    <% @areas.each do |area| %>
+    	//This creates the area variable
+        var <%= 's' + area.id.to_s + area.name.gsub(/\W\s?/, "") %> = <%= area.coords.html_safe %>;
+        //this draws the shape of the area from the coords
+        L.geoJson(<%= 's' + area.id.to_s + area.name.gsub(/\W\s?/, "") %>, {
+        pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, {icon: fadedIcon});
+        }}).addTo(map).setStyle({fillColor: '#fff200', color: '#fff200', weight: 1});
+    <% end %>
+
+		//This was on the edit - I think it was leftover - leaving for a moment
+        //var popup = L.popup();
+		//var <%#= 's' + @area.name.gsub(/\W\s?/, "") %> = <%#= @area.coords.html_safe %>;
+
+</script>
+<%# map stuff ends here %>
