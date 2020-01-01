@@ -3,7 +3,7 @@
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 
-<div class="row" id="mapHolder">
+  <div class="row" id="mapHolder">
     <div class="col-xs-10 col-xs-offset-1">
       <%= render 'editmap' %>
     </div>
@@ -54,7 +54,7 @@
 			layer = e.layer;
 		
 		var shape = layer.toGeoJSON();
-  	var shape_for_db = JSON.stringify(shape);
+  		var shape_for_db = JSON.stringify(shape);
 
 		drawnItems.addLayer(layer);
 		//trying some things here
