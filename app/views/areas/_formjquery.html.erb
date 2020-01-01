@@ -4,3 +4,27 @@
     });
 </script>
 
+<script>
+    //format total area square feet input for Area
+    function formatAreaSquareFeet()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#area_square_feet").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!totalsqft){
+            totalsqft = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //make sure commas are correct
+        var totalsqftformatted = totalsqftfixed.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        //change # to total
+        $("#area_square_feet").val(totalsqftformatted);
+        //this input field is saved as a string
+    }
+    
+    //change or keyup on # will trigger function
+    $(document).on("change, keyup, blur", "#area_square_feet", formatAreaSquareFeet);
+    //make it happen onload
+    $(document).ready(formatAreaSquareFeet);
+</script>
