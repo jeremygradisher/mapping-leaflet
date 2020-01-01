@@ -6,6 +6,8 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @area.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:square_feet) %>:</strong></dt>
+  <dd><%= number_with_delimiter(@area.square_feet, :delimiter => ',') %></dd>
   <dt><strong><%= model_class.human_attribute_name(:info) %>:</strong></dt>
   <dd><%= @area.info %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>

@@ -27,4 +27,26 @@
     $(document).on("change, keyup, blur", "#area_square_feet", formatAreaSquareFeet);
     //make it happen onload
     $(document).ready(formatAreaSquareFeet);
+    
+    //Function to format for Submit to Database
+    function formatForSubmitAreaSquareFeet()
+    {
+        //parseFloat # value after stripping the string of special charactes except period (.)
+        var totalsqft = parseFloat($("#area_square_feet").val().replace(/[^\d\.]/g,''));
+        //if totalbaserent doesn't exist, make it zero
+        if (!totalsqft){
+            totalsqft = 0;
+        }
+        //make sure your float is fixed number with no decimal places
+        var totalsqftfixed = totalsqft.toFixed(0);
+        //change # to total
+        $("#area_square_feet").val(totalsqftfixed);
+        //this input field is saved as a string
+    }
+    
+    //Before Submit Run Function(s)
+    $('.formatFunctions').submit(function() {
+      //Runs Function to strip special characters except (.)
+      formatForSubmitAreaSquareFeet();
+    });
 </script>

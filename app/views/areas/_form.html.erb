@@ -1,4 +1,4 @@
-<%= form_for @area, :html => { :class => "form-horizontal area" } do |f| %>
+<%= form_for @area, :html => { :class => "form-horizontal area formatFunctions" } do |f| %>
 
   <% if @area.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -18,14 +18,14 @@
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <%= f.text_field :name, :class => 'form-control required' %>
     </div>
     <%=f.error_span(:name) %>
   </div>
   <div class="form-group">
     <%= f.label :square_feet, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :square_feet, :class => 'form-control' %>
+      <%= f.text_field :square_feet, :class => 'form-control required' %>
     </div>
     <%=f.error_span(:square_feet) %>
   </div>
@@ -51,7 +51,7 @@
   <div class="form-group">
     <%= f.label :coords, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :coords, :class => 'form-control' %>
+      <%= f.text_field :coords, :class => 'form-control required' %>
     </div>
     <%=f.error_span(:coords) %>
   </div>
@@ -59,14 +59,14 @@
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <% if controller.action_name == "new" %>
-        <%= f.text_field :map_id, value: @map_id, :class => 'form-control' %>
+        <%= f.text_field :map_id, value: @map_id, :class => 'form-control required' %>
         <% else %>
       <%= f.text_field :map_id, :class => 'form-control' %>
       <% end %>
     </div>
     <%=f.error_span(:map_id) %>
   </div>
-  <div class="form-group">
+  <div class="form-group" style='display:none;'>
     <%= f.label :key, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
       <%= f.text_field :key, :class => 'form-control' %>

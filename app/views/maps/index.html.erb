@@ -5,13 +5,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:map_id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:mapimage) %></th>
+      <th>Map ID:</th>
+      <th><%= model_class.human_attribute_name(:mapimage) %>:</th>
+      <th><%= model_class.human_attribute_name(:name) %>:</th>
+      <th>Map Owner:</th>
       <th><%= model_class.human_attribute_name(:width) %></th>
       <th><%= model_class.human_attribute_name(:height) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,17 +19,17 @@
     <% @maps.each do |map| %>
       <tr>
         <td><%= link_to map.id, map_path(map) %></td>
-        <td><%= map.name %></td>
-        <td><%= map.user_id %></td>
-        <td><%= image_tag(map.mapimages.first.mapimage, :style => 'height:60px;') %></td>
+        <td><%= link_to image_tag(map.mapimages.first.mapimage, :style => 'height:60px;'), map_path(map) %></td>
+        <td><%= link_to map.name, map_path(map) %></td>
+        <td><%= User.find(map.user_id).email %></td>
+        
         <td><%= map.mapimages.first.width %></td>
         <td><%= map.mapimages.first.height %></td>
-        <td><%=l map.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       map_path(map), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_map_path(map), :class => 'btn btn-default btn-xs' %>
+                      edit_map_path(map), :class => 'btn btn-primary btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       map_path(map),
                       :method => :delete,
