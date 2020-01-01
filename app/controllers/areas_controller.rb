@@ -78,6 +78,6 @@ class AreasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def area_params
-      params.require(:area).permit(:name, :info, :status, :coords, :map_id, :key)
+      params.require(:area).permit(:name, :info, :status, :coords, :map_id, :square_feet, :key)
     end
 end
