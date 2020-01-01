@@ -29,13 +29,18 @@
     </div>
     <%=f.error_span(:info) %>
   </div>
+  
   <div class="form-group">
-    <%= f.label :status, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :status, :class => 'form-control' %>
+    <%= f.label :status, 'Opening Status', :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= f.select :status, ['Available', 'Prospect', 'Leased'], {include_blank:false}, :class => 'form-control' %>
+      <%#= f.text_field :opening_status, :class => 'form-control' %>
     </div>
     <%=f.error_span(:status) %>
   </div>
+  
+    
+  
   <div class="form-group">
     <%= f.label :coords, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -46,7 +51,11 @@
   <div class="form-group">
     <%= f.label :map_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
+      <% if controller.action_name == "new" %>
+        <%= f.text_field :map_id, value: @map_id, :class => 'form-control' %>
+        <% else %>
       <%= f.text_field :map_id, :class => 'form-control' %>
+      <% end %>
     </div>
     <%=f.error_span(:map_id) %>
   </div>
