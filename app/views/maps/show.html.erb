@@ -12,9 +12,14 @@
   
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">  
-      <br>
-      <%= link_to '+ Add space', new_area_path(:map_id => @map), :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;' %>
-      <br>
+      <div class="page-header /*print-none*/">
+        
+        <%= link_to '+ Add space', new_area_path(:map_id => @map), :class => 'btn btn-primary responsive-none print-none', :style => 'float:right;' %>
+        <h1>Areas</h1>
+      </div>
+    
+      <%= render 'areaslist' %>
+      
     </div>
   </div>
 
@@ -29,10 +34,10 @@
 
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
-      <%= link_to t('.back', :default => t("helpers.links.back")),
+      <%= link_to '<= Back',
                     maps_path, :class => 'btn btn-default'  %>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                    edit_map_path(@map), :class => 'btn btn-default' %>
+                    edit_map_path(@map), :class => 'btn btn-primary' %>
       <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                     map_path(@map),
                     :method => 'delete',
