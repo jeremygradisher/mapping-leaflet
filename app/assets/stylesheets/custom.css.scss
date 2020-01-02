@@ -1,4 +1,6 @@
+//bootstrap clean-up
 body {margin:0 !important;}
+//bootstrap clean-up END
 
 //form stuff
 .form-control-image {
@@ -26,8 +28,10 @@ body {margin:0 !important;}
 .form-control-button {
     vertical-align: middle;
     font-size: 16pt; }
+//form stuff END
     
 //small button clean-up  
 .btn-xs {width:52px;margin-bottom:1px;}
 a.btn-primary:visited, a.btn-danger:visited {color:#fff;}
 a.btn-default:visited {color:#333;}
+//small button clean-up END

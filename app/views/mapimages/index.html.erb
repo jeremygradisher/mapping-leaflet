@@ -1,3 +1,4 @@
+<% if current_user %>
 <%- model_class = Mapimage -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -42,3 +43,6 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_mapimage_path,
             :class => 'btn btn-primary' %>
+<% else %><!-- else and end for <%# if current_user.project_ids.include? @project.id %> -->
+  <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %><!-- END <%# if current_user.project_ids.include? @project.id %> -->

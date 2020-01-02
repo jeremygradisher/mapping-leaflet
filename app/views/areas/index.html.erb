@@ -1,3 +1,4 @@
+<% if current_user %>
 <%- model_class = Area -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -47,3 +48,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_area_path,
             :class => 'btn btn-primary' %>
+
+<% else %>
+ <h2>Must be logged in. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>
