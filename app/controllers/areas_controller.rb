@@ -10,6 +10,7 @@ class AreasController < ApplicationController
   # GET /areas/1
   # GET /areas/1.json
   def show
+    @map = Map.find(@area.map_id)
   end
 
   # GET /areas/new

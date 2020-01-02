@@ -21,9 +21,9 @@
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              areas_path, :class => 'btn btn-default'  %>
+              map_path(@map), :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_area_path(@area), :class => 'btn btn-default' %>
+              edit_area_path(@area), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               area_path(@area),
               :method => 'delete',
