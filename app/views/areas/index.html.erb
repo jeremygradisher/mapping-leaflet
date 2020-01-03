@@ -22,7 +22,13 @@
       <tr>
         <td><%= link_to area.id, area_path(area) %></td>
         
-        <td><%= link_to image_tag('/images/NO-IMAGE-AVAILABLE.jpg', :style => 'height:60px;'), area_path(area) %></td>
+        <td>
+          <% if area.areaimages.count > 0 %>
+          <%= link_to image_tag(area.areaimages.first.areaimage, :style => 'width:60px;'), area_path(area) %>
+          <% else %>
+          <%= link_to image_tag('/images/231unavailable.png', :style => 'width:60px;'), area_path(area) %>
+          <% end %>
+        </td>
         <td><%= link_to area.name, area_path(area) %></td>
         <td><%= number_with_delimiter(area.square_feet, :delimiter => ',') %></td>
         <td width="120"><%= area.info %></td>
