@@ -1,4 +1,4 @@
-
+<% if current_user && current_user.id == @map.user_id || current_user.is_admin? %>
 
   <div class="row" id="mapHolder">
     <div class="col-xs-10 col-xs-offset-1">
@@ -75,3 +75,6 @@
 		<%= render :partial => 'form' %>
 	</div>
   </div>
+<% else %>
+ <h2>You are not authorized to be here. <a href="/" class="btn btn-default">Return Home</a></h2>
+<% end %>

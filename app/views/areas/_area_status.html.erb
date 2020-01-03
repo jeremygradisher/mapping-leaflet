@@ -1,11 +1,6 @@
 <%# status colors exist here %>
-<% if @area.status == '01 Available' %>fillColor: '#c22026', color: '#c22026', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '02 Lease Negotiation' %>fillColor: '#f15b28', color: '#f15b28', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '03 Landlord Construction' %>fillColor: '#dddd4e', color: '#dddd4e', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '04 Tenant Design' %>fillColor: '#24b9ae', color: '#24b9ae', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '05 Tenant Fit-Out' %>fillColor: '#c9e1f7', color: '#c9e1f7', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '06 Open for Business' %>fillColor: '#346db5', color: '#346db5', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '07 Close-Out' %>fillColor: '#6e4a86', color: '#6e4a86', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% elsif @area.status == '08 Operating' %>fillColor: '#32ab41', color: '#32ab41', weight: 1, opacity: 0.6, fillOpacity: 0.6
-    <% else %>fillColor: '#dd0000', color: '#dd0000', weight: 1, opacity: 0.6, fillOpacity: 0.6
+<% if @area.status == 'Available' %>fillColor: '#c22026', color: '#c22026', weight: 1, opacity: 0.9, fillOpacity: 0.6
+    <% elsif @area.status == 'Prospect' %>fillColor: '#dddd4e', color: '#dddd4e', weight: 1, opacity: 0.9, fillOpacity: 0.6
+    <% elsif @area.status == 'Leased' %>fillColor: '#8BC53F', color: '#8BC53F', weight: 1, opacity: 0.9, fillOpacity: 0.6
+    <% else %>fillColor: '#dd0000', color: '#dd0000', weight: 1, opacity: 0.9, fillOpacity: 0.6
 <% end %>
