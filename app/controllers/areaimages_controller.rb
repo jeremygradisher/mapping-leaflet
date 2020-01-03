@@ -42,7 +42,7 @@ class AreaimagesController < ApplicationController
   def update
     respond_to do |format|
       if @areaimage.update(areaimage_params)
-        format.html { redirect_to @areaimage, notice: 'Areaimage was successfully updated.' }
+        format.html { redirect_to @areaimage.area, notice: 'Areaimage was successfully updated.' }
         format.json { render :show, status: :ok, location: @areaimage }
       else
         format.html { render :edit }
