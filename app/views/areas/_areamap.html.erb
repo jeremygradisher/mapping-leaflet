@@ -1,0 +1,58 @@
+<div id='map' style="float:left;height:350px;width:100%;"></div>
+
+<script>
+	//A Leaflet map has one CRS (and one CRS only), that can be changed when creating the map. 
+	//In a CRS.Simple, one horizontal map unit is mapped to one horizontal pixel, 
+	//original: var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -3});
+
+	<% if @mapimage.height.to_i > 10000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -6});
+	<% elsif @mapimage.height.to_i > 5000 && @mapimage.height.to_i <= 10000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -5});
+	<% elsif @mapimage.height.to_i > 2500 && @mapimage.height.to_i <= 5000 %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -4});
+	<% else %>
+	var map = L.map('map', {attributionControl: false, crs: L.CRS.Simple, minZoom: -3});
+	<% end %>
+	
+	var attributionInfo = L.control.attribution({prefix: '<span class="AttributionClass">Map: <%= link_to @map.name, map_path(@map) %> | <%= @mapimage.width.to_i %>w, <%= @mapimage.height.to_i %>h</span>'}).addTo(map);
+
+	//If working with [y, x] coordinates with something named L.LatLng doesn’t make much sense to you, 
+	//you can easily create wrappers for them:
+	var yx = L.latLng;
+
+	var xy = function(x, y) {
+		if (L.Util.isArray(x)) {    // When doing xy([x, y]);
+			return yx(x[1], x[0]);
+		}
+		return yx(y, x);  // When doing xy(x, y);
+	};
+	//Now we can add a few stars and even a navigation line with [x, y] coordinates! (Shown down the page a bit)
+
+	//Then we can just add a L.ImageOverlay with the starmap image and its approximate bounds:
+	var bounds = [xy(0,0), xy(<%= @mapimage.width.to_i %>,<%= @mapimage.height.to_i %>)];
+	//var image = L.imageOverlay('/images/demo-lease-plan.png', bounds).addTo(map);
+	var image = L.imageOverlay('<%= @mapimage.mapimage_url %>', bounds).addTo(map);
+
+	//map.setView(xy(120, 70), 1);
+    map.fitBounds(bounds);
+    
+    // Restrict view to bounds
+	map.setMaxBounds(bounds);
+
+    var popup = L.popup();
+    
+    //same on all maps - Now we can create our icons from this class and use them:
+    <%= render 'marker_variables' %>
+    
+    var areaStatus = L.layerGroup();
+  
+	var geojsonFeatureS = <%= @area.coords.html_safe %>;
+	
+	L.geoJson(geojsonFeatureS, {
+    pointToLayer: function (feature, latlng) {
+    return L.marker(latlng, {<% if @area.status == 'Available' %>icon: availableIcon<% elsif @area.status == 'Prospect' %>icon: yellowIcon<% elsif @area.status == 'Leased'  %>icon: greenIcon<% else %>icon: lblueIcon <% end %>});
+    }}).addTo(areaStatus).setStyle({<%= render :partial => 'area_status' %>});
+
+    areaStatus.addTo(map);
+</script>

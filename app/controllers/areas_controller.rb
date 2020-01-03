@@ -11,6 +11,7 @@ class AreasController < ApplicationController
   # GET /areas/1.json
   def show
     @map = Map.find(@area.map_id)
+    @mapimage = @map.mapimages.first
     @areaimages = @area.areaimages.all
   end
 
