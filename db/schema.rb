@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200101174325) do
+ActiveRecord::Schema.define(version: 20200103190118) do
+
+  create_table "areaimages", force: :cascade do |t|
+    t.integer  "area_id"
+    t.string   "areaimage"
+    t.integer  "map_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["map_id"], name: "index_areaimages_on_map_id"
+  end
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"

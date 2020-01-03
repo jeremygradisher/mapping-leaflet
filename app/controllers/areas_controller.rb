@@ -11,6 +11,7 @@ class AreasController < ApplicationController
   # GET /areas/1.json
   def show
     @map = Map.find(@area.map_id)
+    @areaimages = @area.areaimages.all
   end
 
   # GET /areas/new
@@ -21,6 +22,8 @@ class AreasController < ApplicationController
     @mapimage = @map.mapimages.first
     @mapimages = @map.mapimages.all
     @areas = @map.areas.all
+    @areaimage = @area.areaimages.build
+    @areaimages = @area.areaimages.all
   end
 
   # GET /areas/1/edit
@@ -29,6 +32,8 @@ class AreasController < ApplicationController
     @mapimage = @map.mapimages.first
     @mapimages = @map.mapimages.all
     @areas = @map.areas.all
+    @areaimage = @area.areaimages.build
+    @areaimages = @area.areaimages.all
   end
 
   # POST /areas
@@ -38,6 +43,11 @@ class AreasController < ApplicationController
 
     respond_to do |format|
       if @area.save
+        if params.has_key?(:areaimages)
+           params[:areaimages]['areaimage'].each do |a|
+              @areaimage = @area.areaimages.create!(:areaimage => a)
+           end
+        end
         format.html { redirect_to @area, notice: 'Area was successfully created.' }
         format.json { render :show, status: :created, location: @area }
       else
@@ -52,6 +62,11 @@ class AreasController < ApplicationController
   def update
     respond_to do |format|
       if @area.update(area_params)
+        if params.has_key?(:areaimages)
+           params[:areaimages]['areaimage'].each do |a|
+              @areaimage = @area.areaimages.create!(:areaimage => a)
+           end
+        end
         format.html { redirect_to @area, notice: 'Area was successfully updated.' }
         format.json { render :show, status: :ok, location: @area }
       else
@@ -79,6 +94,6 @@ class AreasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def area_params
-      params.require(:area).permit(:name, :info, :status, :coords, :map_id, :square_feet, :key)
+      params.require(:area).permit(:name, :info, :status, :coords, :map_id, :square_feet, :key, areaimages_attributes: [:id, :area_id, :areaimage])
     end
 end
