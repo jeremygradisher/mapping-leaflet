@@ -110,8 +110,13 @@
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
+    <% if controller.action_name == "new" %>  
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                areas_path, :class => 'btn btn-default' %>
+                map_path(params[:map_id]), :class => 'btn btn-default' %>
+    <% else %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                @area.map, :class => 'btn btn-default' %>
+    <% end %>
     </div>
   </div>
 
