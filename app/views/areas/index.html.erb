@@ -9,11 +9,11 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:areaimage) %></th>
+      <th><%= model_class.human_attribute_name(:mapimage) %></th>
       <th><%= model_class.human_attribute_name(:square_feet) %></th>
       <th><%= model_class.human_attribute_name(:info) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:coords) %></th>
-      <th><%= model_class.human_attribute_name(:map_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -29,12 +29,12 @@
           <%= link_to image_tag('/images/231unavailable.png', :style => 'width:60px;'), area_path(area) %>
           <% end %>
         </td>
+        <td><%= link_to image_tag(area.map.mapimages.first.mapimage, :style => 'width:60px;'), map_path(area.map) %></td>
         <td><%= link_to area.name, area_path(area) %></td>
         <td><%= number_with_delimiter(area.square_feet, :delimiter => ',') %></td>
         <td width="120"><%= area.info %></td>
         <td><%= area.status %></td>
         <td><%= area.coords %></td>
-        <td><%= area.map_id %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       area_path(area), :class => 'btn btn-default btn-xs' %>

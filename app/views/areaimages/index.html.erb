@@ -8,7 +8,6 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:area_id) %></th>
       <th><%= model_class.human_attribute_name(:areaimage) %></th>
-      <th><%= model_class.human_attribute_name(:map_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,19 +17,20 @@
       <tr>
         <td><%= link_to areaimage.id, areaimage_path(areaimage) %></td>
         <td><%= areaimage.area_id %></td>
-        <td><%= areaimage.areaimage %></td>
-        <td><%= areaimage.map_id %></td>
+        <td><%= link_to image_tag(areaimage.areaimage, :style => 'width:60px;'), areaimage_path(areaimage) %></td>
         <td><%=l areaimage.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      areaimage_path(areaimage), :class => 'btn btn-default btn-xs' %>
+                      areaimage_path(areaimage), :class => 'btn btn-default' %>
+          <% if current_user.is_admin? || current_user.id == areaimage.area.map.user_id %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_areaimage_path(areaimage), :class => 'btn btn-default btn-xs' %>
+                      edit_areaimage_path(areaimage), :class => 'btn btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       areaimage_path(areaimage),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
