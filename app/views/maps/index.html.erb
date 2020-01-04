@@ -28,15 +28,15 @@
         <td><%= map.mapimages.first.height %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      map_path(map), :class => 'btn btn-default btn-xs' %>
+                      map_path(map), :class => 'btn btn-default' %>
           <% if current_user.is_admin? || current_user.id == map.user_id %>           
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_map_path(map), :class => 'btn btn-primary btn-xs' %>
+                      edit_map_path(map), :class => 'btn btn-primary' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       map_path(map),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn btn-danger' %>
           <% end %>
         </td>
       </tr>
