@@ -10,7 +10,7 @@ This app has user authenication with Devise, and mapping with leaflet.js and dra
 I figured out a clever way to allow clicks on the mapimage to create coordinates in an array
 that leaflet understands. (You can see it in action in Areas#new and Areas#edit - it's commented)
 
-## Drawing with Leaflet draw
+## Drawing with Leaflet.draw (Areas#new)
 ```
 // Initialise the FeatureGroup to store editable layers
 var drawnItems = new L.FeatureGroup();
