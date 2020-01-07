@@ -35,3 +35,10 @@ body {margin:0 !important;}
 a.btn-primary:visited, a.btn-danger:visited {color:#fff;}
 a.btn-default:visited {color:#333;}
 //small button clean-up END
+
+//print stuff
+@media print {
+    .btn {display:none;}
+    a[href]:after {content: none !important;}
+}
+//print stuff
