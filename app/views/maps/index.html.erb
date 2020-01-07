@@ -8,6 +8,7 @@
     <tr>
       <th>Map ID:</th>
       <th><%= model_class.human_attribute_name(:mapimage) %>:</th>
+      <th><%= model_class.human_attribute_name(:map_areas) %>:</th>
       <th><%= model_class.human_attribute_name(:name) %>:</th>
       <th>Map Owner:</th>
       <th><%= model_class.human_attribute_name(:width) %></th>
@@ -21,6 +22,7 @@
       <tr>
         <td><%= link_to map.id, map_path(map) %></td>
         <td><%= link_to image_tag(map.mapimages.first.mapimage, :style => 'height:60px;'), map_path(map) %></td>
+        <td><%= link_to map.areas.count, map_path(map) %></td>
         <td><%= link_to map.name, map_path(map) %></td>
         <td><%= User.find(map.user_id).email %></td>
         
