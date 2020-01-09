@@ -1,6 +1,6 @@
 # Mapping with Leaflet.js and Leaflet Draw
 
-Simplifying what I know on this subject.
+## Simplifying what I know on image-mapping with Leaflet.
 
 https://mapping-with-leaflet.herokuapp.com
 
