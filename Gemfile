@@ -8,7 +8,7 @@ ruby '2.6.3'
 gem 'devise'
 #gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem "puma", ">= 3.12.4"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem "nokogiri", ">= 1.10.8"
 
 #bootstrap it up
 gem 'twitter-bootstrap-rails'
