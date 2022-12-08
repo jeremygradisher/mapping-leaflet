@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20200103190118) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "areaimages", force: :cascade do |t|
     t.integer  "area_id"
     t.string   "areaimage"
     t.integer  "map_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["map_id"], name: "index_areaimages_on_map_id"
+    t.index ["map_id"], name: "index_areaimages_on_map_id", using: :btree
   end
 
   create_table "areas", force: :cascade do |t|
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20200103190118) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "square_feet"
-    t.index ["map_id"], name: "index_areas_on_map_id"
+    t.index ["map_id"], name: "index_areas_on_map_id", using: :btree
   end
 
   create_table "mapimages", force: :cascade do |t|
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20200103190118) do
     t.integer  "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["map_id"], name: "index_mapimages_on_map_id"
+    t.index ["map_id"], name: "index_mapimages_on_map_id", using: :btree
   end
 
   create_table "maps", force: :cascade do |t|
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 20200103190118) do
     t.string   "key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_maps_on_user_id"
+    t.index ["user_id"], name: "index_maps_on_user_id", using: :btree
   end
 
   create_table "user_avatars", force: :cascade do |t|
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20200103190118) do
     t.string   "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_avatars_on_user_id"
+    t.index ["user_id"], name: "index_user_avatars_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,8 +84,13 @@ ActiveRecord::Schema.define(version: 20200103190118) do
     t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "areaimages", "maps"
+  add_foreign_key "areas", "maps"
+  add_foreign_key "mapimages", "maps"
+  add_foreign_key "maps", "users"
+  add_foreign_key "user_avatars", "users"
 end
