@@ -90,7 +90,7 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    date (3.3.0)
+    date (3.3.1)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -277,7 +277,7 @@ DEPENDENCIES
   mimemagic (~> 0.4.3)
   mini_magick
   nokogiri (>= 1.10.8)
-  pg (~> 1.4, >= 1.4.2)
+  pg
   puma
   rails (~> 7.0.0)
   rails_12factor

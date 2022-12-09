@@ -54,7 +54,8 @@ gem 'mimemagic', '~> 0.4.3'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 #gem 'pg', '~> 0.21'
-gem 'pg', '~> 1.4', '>= 1.4.2'
+#gem 'pg', '~> 1.4', '>= 1.4.2'
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
