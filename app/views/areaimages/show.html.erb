@@ -5,7 +5,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<%= image_tag(@areaimage.areaimage, :style => 'width:300px;') %>
+<%= image_tag(@areaimage.areaimage_url, :style => 'width:300px;') %>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:area_id) %>:</strong></dt>
@@ -20,7 +20,7 @@
               @areaimage.area, :class => 'btn btn-default'  %>
 <% if current_user.is_admin? || current_user.id == @areaimage.area.map.user_id %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_areaimage_path(@areaimage), :class => 'btn btn-default' %>
+              edit_areaimage_path(@areaimage), :class => 'btn btn-primary' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               areaimage_path(@areaimage),
               :method => 'delete',

@@ -20,7 +20,7 @@
         
         <td>
           <% if area.areaimages.count > 0 %>
-            <%= link_to image_tag(area.areaimages.first.areaimage, :style => 'width:60px;'), area_path(area) %>
+            <%= link_to image_tag(area.areaimages.first.areaimage_url, :style => 'width:60px;'), area_path(area) %>
           <% else %>
             <%= link_to image_tag('/images/231unavailable.png', :style => 'width:60px;'), area_path(area) %>
           <% end %>
