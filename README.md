@@ -8,7 +8,10 @@ https://mapping-with-leaflet.herokuapp.com
 
 This app has user authenication with Devise, and mapping with leaflet.js and drawing shapes with Leaflet.draw. 
 I figured out a clever way to allow clicks on the mapimage to create coordinates in an array
-that leaflet understands. (You can see it in action in Areas#new and Areas#edit - it's commented)
+that leaflet understands. (You can see it in action in Areas#new and Areas#edit - it's commented).
+
+If the map is broken, it's because the width and height didn't get saved in the Map Image. 
+If you edit and add the dimensions, it will work.
 
 ## Drawing with Leaflet.draw (Areas#new)
 ```
