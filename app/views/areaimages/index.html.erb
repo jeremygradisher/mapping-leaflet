@@ -17,7 +17,7 @@
       <tr>
         <td><%= link_to areaimage.id, areaimage_path(areaimage) %></td>
         <td><%= areaimage.area_id %></td>
-        <td><%= link_to image_tag(areaimage.areaimage, :style => 'width:60px;'), areaimage_path(areaimage) %></td>
+        <td><%= link_to image_tag(areaimage.areaimage_url, :style => 'width:60px;'), areaimage_path(areaimage) %></td>
         <td><%=l areaimage.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

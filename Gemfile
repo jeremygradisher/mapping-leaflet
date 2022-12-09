@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 7.0.0'
 #ruby '2.6.3'
-ruby '2.7.6'
+#ruby '2.7.6'
+ruby '3.1.2'
 # Use sqlite3 as the database for Active Record
 gem 'devise'
 #gem 'sqlite3'
@@ -50,8 +51,10 @@ gem 'sql_queries_count'
 
 gem 'mimemagic', '~> 0.4.3'
 
-gem 'pg', '~> 0.21'
-#gem 'pg', '~> 1.4', '>= 1.4.2'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+#gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.4', '>= 1.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

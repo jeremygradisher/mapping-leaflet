@@ -21,7 +21,7 @@
     <% @maps.each do |map| %>
       <tr>
         <td><%= link_to map.id, map_path(map) %></td>
-        <td><%= link_to image_tag(map.mapimages.first.mapimage, :style => 'height:60px;'), map_path(map) %></td>
+        <td><%= link_to image_tag(map.mapimages.first.mapimage_url, :style => 'height:60px;'), map_path(map) %></td>
         <td><%= link_to map.areas.count, map_path(map) %></td>
         <td><%= link_to map.name, map_path(map) %></td>
         <td><%= User.find(map.user_id).email %></td>

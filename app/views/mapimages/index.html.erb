@@ -20,7 +20,7 @@
       <tr>
         <td><%= link_to mapimage.id, mapimage_path(mapimage) %></td>
         <td><%= mapimage.map_id %></td>
-        <td><%= link_to image_tag(mapimage.mapimage, :style => 'width:60px;'), mapimage_path(mapimage) %></td>
+        <td><%= link_to image_tag(mapimage.mapimage_url, :style => 'width:60px;'), mapimage_path(mapimage) %></td>
         <td><%= mapimage.width %></td>
         <td><%= mapimage.height %></td>
         <td><%=l mapimage.created_at %></td>
