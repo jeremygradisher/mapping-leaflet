@@ -2,7 +2,7 @@ class CreateMaps < ActiveRecord::Migration[5.0]
   def change
     create_table :maps do |t|
       t.string :name
-      t.integer :user_id
+      t.integer :user_id_maps
       t.string :key
       t.belongs_to :user, index: true, foreign_key: true
 
