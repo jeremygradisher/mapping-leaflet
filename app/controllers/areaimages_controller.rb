@@ -69,6 +69,6 @@ class AreaimagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def areaimage_params
-      params.require(:areaimage).permit(:area_id, :areaimage)
+      params.require(:areaimage).permit(:area_id, :map_id, :areaimage)
     end
 end
