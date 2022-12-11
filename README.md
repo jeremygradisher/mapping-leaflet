@@ -2,7 +2,9 @@
 
 Simplifying what I know on image-mapping with Leaflet.
 
-https://mapping-with-leaflet.herokuapp.com
+Running with Ruby 3.1.2 and Rails 7.0.4 as of 12/11/22
+
+https://mappingleaflet.herokuapp.com/
 
 ...and now we build.
 
