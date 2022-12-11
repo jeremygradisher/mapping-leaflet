@@ -15,11 +15,12 @@ ActiveRecord::Schema[7.0].define(version: 2020_01_03_190118) do
   enable_extension "plpgsql"
 
   create_table "areaimages", id: :serial, force: :cascade do |t|
-    t.integer "area_id_areaimages"
     t.string "areaimage"
     t.integer "map_id"
+    t.integer "area_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["area_id"], name: "index_areaimages_on_area_id"
     t.index ["map_id"], name: "index_areaimages_on_map_id"
   end
 
@@ -29,7 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2020_01_03_190118) do
     t.string "status"
     t.string "coords"
     t.integer "square_feet"
-    t.integer "map_id_areas"
     t.string "key"
     t.integer "map_id"
     t.datetime "created_at", precision: nil, null: false
@@ -38,7 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2020_01_03_190118) do
   end
 
   create_table "mapimages", id: :serial, force: :cascade do |t|
-    t.integer "map_id_mapimages"
     t.string "mapimage"
     t.integer "width"
     t.integer "height"
@@ -50,7 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2020_01_03_190118) do
 
   create_table "maps", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "user_id_maps"
     t.string "key"
     t.integer "user_id"
     t.datetime "created_at", precision: nil, null: false
@@ -59,7 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2020_01_03_190118) do
   end
 
   create_table "user_avatars", id: :serial, force: :cascade do |t|
-    t.integer "user_id_avatars"
     t.string "avatar"
     t.integer "user_id"
     t.datetime "created_at", precision: nil, null: false
@@ -91,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2020_01_03_190118) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "areaimages", "areas"
   add_foreign_key "areaimages", "maps"
   add_foreign_key "areas", "maps"
   add_foreign_key "mapimages", "maps"
