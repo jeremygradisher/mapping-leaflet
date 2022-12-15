@@ -53,6 +53,8 @@ gem 'mimemagic', '~> 0.4.3'
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+gem 'sendgrid-ruby'
+
 #gem 'pg', '~> 0.21'
 #gem 'pg', '~> 1.4', '>= 1.4.2'
 gem 'pg'

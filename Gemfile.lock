@@ -99,7 +99,7 @@ GEM
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
     erubi (1.11.0)
-    excon (0.94.0)
+    excon (0.95.0)
     execjs (2.8.1)
     ffi (1.15.5)
     fog-aws (3.15.0)
@@ -141,7 +141,7 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.0)
@@ -201,8 +201,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.3)
-      loofah (~> 2.3)
+    rails-html-sanitizer (1.4.4)
+      loofah (~> 2.19, >= 2.19.1)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -224,8 +224,11 @@ GEM
       railties (>= 5.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    ruby_http_client (3.5.5)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     spring (4.1.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -282,6 +285,7 @@ DEPENDENCIES
   rails (~> 7.0.0)
   rails_12factor
   sassc
+  sendgrid-ruby
   spring
   sprockets-rails
   sql_queries_count
