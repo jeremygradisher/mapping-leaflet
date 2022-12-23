@@ -21,4 +21,5 @@
 .byebug_history
 
 # Ignore uploads
-/public/uploads/*
+/public/uploads/*sendgrid.env
+sendgrid.env

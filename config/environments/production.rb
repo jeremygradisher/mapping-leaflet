@@ -9,7 +9,7 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    :domain         => 'mappingleaflet.herokuapp.com'
   }
 
   # Code is not reloaded between requests.
@@ -22,7 +22,7 @@ Rails.application.configure do
   config.eager_load = true
   config.action_mailer.delivery_method = :smtp
   #simpl addition of www here to try and change the email confirmation links
-  config.action_mailer.default_url_options = { :host => 'leafletmapping.herokuapp.com', :protocol => 'https'}
+  config.action_mailer.default_url_options = { :host => 'mappingleaflet.herokuapp.com', :protocol => 'https'}
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
