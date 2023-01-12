@@ -1,13 +1,28 @@
-<h1>Quick Example - Mapping with Leaflet.js</h1>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+      <h1 style="margin-bottom:40px;">Quick Example - Mapping with Leaflet.js</h1>
+        <p>
+            This app has user authenication with Devise, and mapping with leaflet.js 
+            and drawing shapes with Leaflet Draw. 
+            I figured out a clever way to allow clicks on the mapimage to create coordinates in an array
+            that leaflet understands. (You can see it in action in Areas#new and Areas#edit - it's commented)
+        </p>
+  </div>
+</div>
 
-<p>
-    This app has user authenication with Devise, and mapping with leaflet.js 
-    and drawing shapes with Leaflet Draw. 
-    I figured out a clever way to allow clicks on the mapimage to create coordinates in an array
-    that leaflet understands. (You can see it in action in Areas#new and Areas#edit - it's commented)
-</p>
-<p>
-    This is running with Ruby 3.1.2 and Rails 7.0.4 as of 12/11/22
-</p>
-
-<h4>...and now we build!</h4>
+<div class="row">
+  <div class="col-xs-3 col-xs-offset-1">
+      <p>This is what the map looks like. It's visually appealing and user
+      friendly to draw on.</p>
+    <img src="/images/interactive-map.jpg" style="margin-bottom:10px;max-width:100%;">
+  </div>
+  <div class="col-xs-4" style="text-align:center;">
+      <p>Go a head and create an account or login with the following credentials:</p>
+    <img src="/images/login.jpg" style="margin-bottom:10px;max-width:100%;">
+  </div>
+  <div class="col-xs-3" style="text-align:center;">
+      <p>Once you are in navigate to the maps and select the one that you are 
+      allowed to edit and draw on it.</p>
+    <img src="/images/draw.jpg" style="margin-bottom:10px;max-width:100%;">
+  </div>
+</div>
